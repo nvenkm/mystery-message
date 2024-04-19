@@ -56,7 +56,7 @@ export async function GET(request: Request) {
   } catch (error) {
     console.log("ERROR:", error);
 
-    Response.json(
+    return Response.json(
       {
         success: true,
         message: "Error checking username!",
