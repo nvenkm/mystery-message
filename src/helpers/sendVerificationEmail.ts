@@ -25,7 +25,7 @@ export async function sendVerificationEmail(
     });
 
     var mailOptions = {
-      from: "7naveennn@gmail.com",
+      from: process.env.EMAIL,
       to: email,
       subject: "Sending Email using Node.js",
       html: `<div>
