@@ -19,7 +19,7 @@ export async function sendVerificationEmail(
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "7naveennn@gmail.com",
+        user: process.env.EMAIL,
         pass: process.env.APP_PASS,
       },
     });
