@@ -121,9 +121,9 @@ export default function SignUpForm() {
             src="https://static.vecteezy.com/system/resources/previews/013/545/880/non_2x/modern-colorful-wavy-line-background-design-wave-curve-abstract-background-for-business-landing-page-flyers-website-banner-and-presentation-free-vector.jpg"
           ></Image>
         </div>
-        <div className="col-span-1 w-full p-8 space-y-8 bg-white shadow-md">
+        <div className="col-span-1 w-full px-6 py-4 space-y-8 bg-white shadow-md">
           <div className="text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
+            <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-3">
               Join True Feedback
             </h1>
             <p className="mb-4">Sign up to start your anonymous adventure</p>
@@ -203,7 +203,7 @@ export default function SignUpForm() {
               </Button>
             </form>
           </Form>
-          <div className="text-center mt-4">
+          <div className="text-center mt-1">
             <p>
               Already a member?{" "}
               <Link
