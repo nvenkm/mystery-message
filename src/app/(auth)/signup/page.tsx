@@ -207,7 +207,7 @@ export default function SignUpForm() {
             <p>
               Already a member?{" "}
               <Link
-                href="/sign-in"
+                href="/signin"
                 className="text-blue-600 hover:text-blue-800"
               >
                 Sign in

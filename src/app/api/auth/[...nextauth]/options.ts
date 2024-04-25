@@ -40,15 +40,8 @@ export const authOptions: NextAuthOptions = {
         if (compare) {
           return user;
         } else {
-          throw new Error("Incorrect Password!");
+          throw new Error("Incorrect email or password!");
         }
-
-        try {
-        } catch (error: any) {
-          throw new Error(error);
-        }
-
-        return null;
       },
     }),
   ],
