@@ -11,8 +11,8 @@ const usernameQuerySchema = z.object({
 //to check is username is available or not!
 export async function GET(request: Request) {
   await dbConnect();
+  const { searchParams } = new URL(request.url);
   try {
-    const { searchParams } = new URL(request.url);
     const username = searchParams.get("username");
 
     //validate the username with zod
