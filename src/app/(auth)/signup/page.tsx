@@ -115,6 +115,7 @@ export default function SignUpForm() {
           </h2>
           <Image
             className="w-full h-full object-cover"
+            priority
             width={1080}
             alt="Form"
             height={1350}
