@@ -107,8 +107,8 @@ export default function SignUpForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-purple-100">
-      <div className="max-w-4xl grid grid-cols-1 md:grid-cols-2">
+    <div className="flex justify-center items-start md:items-center min-h-screen bg-purple-100">
+      <div className="max-w-4xl mx-7 my-20 md:m-0 grid grid-cols-1 md:grid-cols-2">
         <div className="col-span-1 hidden md:block relative">
           <h2 className="text-white text-4xl font-extrabold tracking-tight absolute top-8 left-6">
             Welcome ❤️
@@ -168,7 +168,7 @@ export default function SignUpForm() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <Input {...field} name="email" />
-                    <p className="text-muted text-gray-800 text-sm">
+                    <p className="text-gray-500 text-sm">
                       We will send you a verification code
                     </p>
                     <FormMessage />
