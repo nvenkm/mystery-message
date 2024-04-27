@@ -7,7 +7,7 @@ export interface MessageInterface extends Document {
 }
 
 //message schema
-const MessageSchema: Schema<MessageInterface> = new Schema(
+export const MessageSchema: Schema<MessageInterface> = new Schema(
   {
     content: {
       type: String,
