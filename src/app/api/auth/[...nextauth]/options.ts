@@ -51,18 +51,6 @@ export const authOptions: NextAuthOptions = {
   session: { strategy: "jwt" },
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    //called whenever a session is checked
-    async session({ session, token }: any) {
-      if (token) {
-        session._id = token._id?.toString();
-        session.isVerified = token.isVerified;
-        session.isAcceptingMessages = token.isAcceptingMessages;
-        session.username = token.username;
-      }
-
-      return session;
-    },
-
     //called when JSON Web Token is created
     async jwt({ token, user }: any) {
       if (user) {
@@ -72,6 +60,18 @@ export const authOptions: NextAuthOptions = {
         token.username = user.username;
       }
       return token;
+    },
+    //called whenever a session is checked
+    async session({ session, token }: any) {
+      if (token) {
+        // console.log("Token:", token);
+        session.user._id = token._id?.toString();
+        session.user.isVerified = token.isVerified;
+        session.user.isAcceptingMessages = token.isAcceptingMessages;
+        session.user.username = token.username;
+      }
+      // console.log("Sessoin", session);
+      return session;
     },
   },
 };
