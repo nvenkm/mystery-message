@@ -4,6 +4,8 @@ import { AuthProvider } from "@/context/AuthProvider";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/Navbar";
+import { Recursive } from "next/font/google";
+const recursive = Recursive({ subsets: ["cyrillic-ext"] });
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={recursive.className}>
         <Toaster />
         <AuthProvider>{children}</AuthProvider>
       </body>

@@ -15,10 +15,10 @@ const Navbar = () => {
   console.log("User::::::;;;;", session);
 
   return (
-    <nav className="p-3 md:p-4 md:px-20 shadow-sm bg-purple-50">
-      <div className="flex justify-between items-center">
+    <nav className="p-2 md:px-20 shadow-sm backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link
-          className={`${recursive.className} text-gray-800 font-extrabold font-`}
+          className={`${recursive.className} text-gray-800 font-semibold`}
           href="/"
         >
           GET-Responses ✉️
@@ -30,7 +30,9 @@ const Navbar = () => {
           </>
         ) : (
           <Link href="/signin">
-            <Button>Login</Button>
+            <Button className="px-4" size={"sm"}>
+              Login
+            </Button>
           </Link>
         )}
       </div>
