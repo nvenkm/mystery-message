@@ -15,6 +15,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import React from "react";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const plugin = React.useRef(
@@ -84,6 +85,7 @@ export default function Home() {
           <CarouselNext className="text-accent-foreground" />
         </Carousel>
       </section>
+      <Footer />
     </main>
   );
 }

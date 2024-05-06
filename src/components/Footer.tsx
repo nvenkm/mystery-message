@@ -4,7 +4,7 @@ import { BsGlobe2 } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 const Footer = () => {
   return (
-    <footer className="flex flex-col text-center p-8 justify-center items-center gap-5 bg-purple-50">
+    <footer className="flex flex-col w-full text-center p-8 justify-center items-center gap-5 bg-purple-50">
       <p>
         Thankyou{" "}
         <a
