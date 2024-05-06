@@ -53,7 +53,7 @@ export default function Home() {
       <section
         className="flex flex-col h-[90vh] w-full pt-20 px-8 md:px-16 items-center gap-9 md:gap-40"
         style={{
-          background: "url('/bg2.png')",
+          background: "url('/bg.png')",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
