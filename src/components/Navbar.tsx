@@ -15,7 +15,7 @@ const Navbar = () => {
   console.log("User::::::;;;;", session);
 
   return (
-    <nav className="p-2 md:px-20 shadow-sm backdrop-blur-sm">
+    <nav className="p-2 md:px-20 shadow-sm backdrop-blur-lg bg-white/70 fixed w-full">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link
           className={`${recursive.className} text-gray-800 font-semibold`}
