@@ -15,7 +15,6 @@ import * as z from "zod";
 const Verify = () => {
   const router = useRouter();
   const params = useParams<{ username: string }>();
-  console.log("Params:", params);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof verifySchema>>({

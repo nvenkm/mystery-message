@@ -43,8 +43,6 @@ const Signin = () => {
       callbackUrl: "/dashboard",
     });
 
-    console.log("Result:", result);
-
     if (result?.error) {
       toast({
         title: "Signin Failed",

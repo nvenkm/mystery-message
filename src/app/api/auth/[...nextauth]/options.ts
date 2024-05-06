@@ -64,13 +64,11 @@ export const authOptions: NextAuthOptions = {
     //called whenever a session is checked
     async session({ session, token }: any) {
       if (token) {
-        // console.log("Token:", token);
         session.user._id = token._id?.toString();
         session.user.isVerified = token.isVerified;
         session.user.isAcceptingMessages = token.isAcceptingMessages;
         session.user.username = token.username;
       }
-      // console.log("Sessoin", session);
       return session;
     },
   },

@@ -114,7 +114,7 @@ export async function GET(req: Request) {
         isAcceptingMessages: user.isAcceptingMessages,
       },
       {
-        status: 404,
+        status: 200,
       }
     );
   } catch (error) {
