@@ -55,8 +55,6 @@ export default function Home() {
         className="flex flex-col h-[90vh] w-full pt-20 px-8 md:px-16 items-center gap-9 md:gap-40"
         style={{
           background: "url('/bg.png')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
         }}
       >
         <h1 className="text-3xl text-center md:text-left md:text-5xl font-bold">
