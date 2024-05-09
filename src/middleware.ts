@@ -4,7 +4,7 @@ export { default } from "next-auth/middleware";
 import { getToken } from "next-auth/jwt";
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/signin", "/signup", "/verify/:path*"],
+  matcher: ["/dashboard/:path*", "/signin", "/signup", "/verify/:path*", "/"],
 };
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
@@ -12,11 +12,11 @@ export async function middleware(request: NextRequest) {
   const url = request.nextUrl;
 
   if (
-    token &&
-    (url.pathname.startsWith("/signin") ||
-      url.pathname.startsWith("/signup") ||
-      url.pathname.startsWith("/verify"))
-    // url.pathname.startsWith("/")
+    (token &&
+      (url.pathname.startsWith("/signin") ||
+        url.pathname.startsWith("/signup") ||
+        url.pathname.startsWith("/verify"))) ||
+    url.pathname === "/"
   ) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
