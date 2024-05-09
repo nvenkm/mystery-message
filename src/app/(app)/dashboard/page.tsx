@@ -50,6 +50,7 @@ const Dashboard = () => {
       });
     } finally {
       setIsSwitchLoading(false);
+      setIsLoading(false);
     }
   }, [acceptMessages, setValue, toast]);
 
@@ -77,6 +78,7 @@ const Dashboard = () => {
         });
       } finally {
         setIsSwitchLoading(false);
+        setIsLoading(false);
       }
     },
     [setIsLoading, setMessages]
@@ -137,7 +139,9 @@ const Dashboard = () => {
             disabled
             className="input input-bordered w-full p-2 mr-2"
           />
-          <Button onClick={copyToClipboard}>Copy</Button>
+          <Button className="rounded-l-none" onClick={copyToClipboard}>
+            Copy
+          </Button>
         </div>
       </div>
 
