@@ -42,8 +42,8 @@ const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
   }
 
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
+    <Card className="shadow-md">
+      <CardHeader className="flex flex-row flex-wrap items-center justify-between">
         <CardTitle className="text-lg">{message.content}</CardTitle>
         <AlertDialog>
           <AlertDialogTrigger asChild>
