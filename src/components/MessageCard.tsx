@@ -30,7 +30,9 @@ type MessageCardProps = {
 };
 
 const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
+  console.log(message);
   const { toast } = useToast();
+  const date = new Date(message.createdAt);
   async function handleDeleteMessage() {
     const response = await axios.delete(`/api/delete-message/${message._id}`);
     toast({
@@ -41,8 +43,8 @@ const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Card Title</CardTitle>
+      <CardHeader className="flex flex-row items-center justify-between">
+        <CardTitle className="text-lg">{message.content}</CardTitle>
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive">Delete</Button>
@@ -63,13 +65,9 @@ const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-        <CardDescription>Card Description</CardDescription>
       </CardHeader>
-      <CardContent>
-        <p>Card Content</p>
-      </CardContent>
       <CardFooter>
-        <p>Card Footer</p>
+        <p>{date.toLocaleString()}</p>
       </CardFooter>
     </Card>
   );
