@@ -127,7 +127,7 @@ const Dashboard = () => {
   }
 
   return (
-    <main className="bg-gray-50">
+    <main className="bg-gray-50 pb-6">
       <div className="px-8 lg:mx-auto pt-32  rounded max-w-6xl min-h-screen">
         <h1 className="text-4xl font-bold mb-4">User Dashboard</h1>
 
