@@ -12,13 +12,15 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useToast } from "@/components/ui/use-toast";
 import { ApiResponseInterface } from "@/types/ApiResponse";
 import Link from "next/link";
+import { useRecoilState } from "recoil";
+import { isLoadingAtom } from "@/state-machine/Atoms";
 
 type Inputs = {
   message: string;
 };
 
 const Page = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useRecoilState(isLoadingAtom);
   const { toast } = useToast();
 
   const {

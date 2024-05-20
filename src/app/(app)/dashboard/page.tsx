@@ -7,6 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/components/ui/use-toast";
 import { MessageInterface, UserInterface } from "@/models/User";
 import { acceptMessageSchema } from "@/schemas/acceptMessageSchema";
+import { isLoadingAtom } from "@/state-machine/Atoms";
 import { ApiResponseInterface } from "@/types/ApiResponse";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
@@ -14,10 +15,12 @@ import { Loader2, RefreshCcw } from "lucide-react";
 import { useSession } from "next-auth/react";
 import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
 
 const Dashboard = () => {
   const [messages, setMessages] = useState<MessageInterface[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  // const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useRecoilState(isLoadingAtom);
   const [isSwitchLoading, setIsSwitchLoading] = useState<boolean>(false);
   const { toast } = useToast();
   const { data: session } = useSession();
@@ -83,6 +86,10 @@ const Dashboard = () => {
     },
     [setIsLoading, setMessages]
   );
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   useEffect(() => {
     if (!session || !session.user) return;

@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { signinSchema } from "@/schemas/signinSchema";
+import { isLoadingAtom } from "@/state-machine/Atoms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import { signIn } from "next-auth/react";
@@ -19,12 +20,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
 import * as z from "zod";
 
 const Signin = () => {
   const { toast } = useToast();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useRecoilState(isLoadingAtom);
 
   //zod implementation
   const form = useForm<z.infer<typeof signinSchema>>({
@@ -36,6 +39,7 @@ const Signin = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof signinSchema>) => {
+    setIsLoading(true);
     const result = await signIn("credentials", {
       redirect: false,
       email: data.email,
@@ -54,6 +58,7 @@ const Signin = () => {
     // redirect to dashboard
     if (result?.url) {
       router.replace("/dashboard");
+      setIsLoading(false);
     }
   };
 
@@ -111,7 +116,7 @@ const Signin = () => {
                 )}
               />
               <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? (
+                {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     Please wait
