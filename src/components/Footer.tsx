@@ -49,7 +49,7 @@ const Footer = () => {
           <BsLinkedin size={26} />
         </a>
       </div>
-      <p>© 2022 GET-Responses</p>
+      <p>© 2024 GET-Responses</p>
     </footer>
   );
 };
