@@ -11,6 +11,7 @@ import { isLoadingAtom } from "@/state-machine/Atoms";
 import { ApiResponseInterface } from "@/types/ApiResponse";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
+import dayjs from "dayjs";
 import { Loader2, RefreshCcw } from "lucide-react";
 import { useSession } from "next-auth/react";
 import React, { useCallback, useEffect, useState } from "react";
@@ -182,13 +183,18 @@ const Dashboard = () => {
         </Button>
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
           {messages.length > 0 ? (
-            messages.map((message, index) => (
-              <MessageCard
-                key={message._id}
-                message={message}
-                onMessageDelete={handleDeleteMessage}
-              />
-            ))
+            messages
+              .sort(
+                (a: any, b: any) =>
+                  new Date(b.createdAt) - new Date(a.createdAt)
+              )
+              .map((message, index) => (
+                <MessageCard
+                  key={message._id}
+                  message={message}
+                  onMessageDelete={handleDeleteMessage}
+                />
+              ))
           ) : (
             <p>No messages to display.</p>
           )}

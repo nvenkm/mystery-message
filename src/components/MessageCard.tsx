@@ -31,7 +31,6 @@ type MessageCardProps = {
 };
 
 const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
-  console.log(message);
   const { toast } = useToast();
   const date = new Date(message.createdAt);
   async function handleDeleteMessage() {
