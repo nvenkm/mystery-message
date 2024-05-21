@@ -38,7 +38,7 @@ export async function sendVerificationEmail(
     var mailOptions = {
       from: process.env.EMAIL,
       to: email,
-      subject: "Sending Email using Node.js",
+      subject: "Verification code for Get-Responses",
       html: html,
     };
     const sent = await transporter.sendMail(mailOptions);
