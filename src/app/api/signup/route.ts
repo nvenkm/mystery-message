@@ -15,6 +15,7 @@ export async function POST(request: Request) {
       isVerified: false,
       username: username,
     });
+    //if expired
     if (
       existingUnverifiedUserByUsername &&
       dayjs(new Date()).isAfter(
@@ -22,6 +23,16 @@ export async function POST(request: Request) {
       )
     ) {
       await UserModel.deleteOne({ username: username, isVerified: false });
+    } else {
+      return Response.json(
+        {
+          success: false,
+          message: "Username is already taken!",
+        },
+        {
+          status: 400,
+        }
+      );
     }
 
     //verified user already exists with the same username
@@ -68,6 +79,7 @@ export async function POST(request: Request) {
         //change the fields
         existingUserByEmail.password = hashed;
         existingUserByEmail.verifyCode = verifyCode;
+        existingUserByEmail.username = username;
         existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000); //1Hr expiry
 
         await existingUserByEmail.save();
