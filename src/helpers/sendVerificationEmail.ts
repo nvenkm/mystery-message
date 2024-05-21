@@ -2,6 +2,7 @@ import { resend } from "@/lib/resend";
 import { ApiResponseInterface } from "@/types/ApiResponse";
 import nodemailer from "nodemailer";
 import ejs from "ejs";
+import path from "path";
 
 export async function sendVerificationEmail(
   email: string,
@@ -27,12 +28,16 @@ export async function sendVerificationEmail(
     console.log(
       `Verify page link : ${process.env.HOMEPAGE_URL}/verify/${username}`
     );
+    console.log("CWD::", process.cwd());
     //render the ejs template
-    const html = await ejs.renderFile("./src/views/verificationEmail.ejs", {
-      username: username,
-      otp: verifyCode,
-      link: `${process.env.HOMEPAGE_URL}/verify/${username}`,
-    });
+    const html = await ejs.renderFile(
+      path.join(process.cwd(), "/src/views/verificationEmail.ejs"),
+      {
+        username: username,
+        otp: verifyCode,
+        link: `${process.env.HOMEPAGE_URL}/verify/${username}`,
+      }
+    );
 
     var mailOptions = {
       from: process.env.EMAIL,

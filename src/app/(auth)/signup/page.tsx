@@ -124,7 +124,7 @@ export default function SignUpForm() {
       <div className="col-span-1 w-full px-6 py-4 space-y-8 bg-white shadow-md">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-3">
-            Join True Feedback
+            Join Get-Responses
           </h1>
           <p className="mb-4">Sign up to start your anonymous adventure</p>
         </div>
