@@ -2,6 +2,7 @@ import { dbConnect } from "@/lib/dbConnect";
 import UserModel from "@/models/User";
 import { z } from "zod";
 import { usernameValidation } from "@/schemas/signupSchema";
+import dayjs from "dayjs";
 
 //it needs an object with username inside (can be added more)
 const usernameQuerySchema = z.object({
@@ -36,18 +37,30 @@ export async function GET(request: Request) {
 
     const successUsername = result.data.username;
 
-    const existingVerifiedUser = await UserModel.findOne({
+    const existingUser = await UserModel.findOne({
       username: successUsername,
-      isVerified: true,
     });
 
-    if (existingVerifiedUser) {
-      return Response.json({
-        success: false,
-        message: "Username is already taken!",
-      });
-    }
+    if (existingUser) {
+      console.log(
+        dayjs(new Date()).isBefore(dayjs(existingUser.verifyCodeExpiry))
+      );
+      console.log(existingUser);
+      console.log(dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss"));
+      console.log(
+        dayjs(existingUser.verifyCodeExpiry).format("YYYY-MM-DD HH:mm:ss")
+      );
 
+      if (
+        existingUser.isVerified ||
+        dayjs(new Date()).isBefore(dayjs(existingUser.verifyCodeExpiry))
+      ) {
+        return Response.json({
+          success: false,
+          message: "Username is already taken!",
+        });
+      }
+    }
     return Response.json({
       success: true,
       message: "Username is available!",

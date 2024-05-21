@@ -2,12 +2,27 @@ import { dbConnect } from "../../../lib/dbConnect";
 import UserModel from "@/models/User";
 import bcrypt from "bcryptjs";
 import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
+import dayjs from "dayjs";
 
 export async function POST(request: Request) {
   await dbConnect();
 
   try {
     const { email, username, password } = await request.json();
+
+    //check if an unverified user already exists with the same username
+    const existingUnverifiedUserByUsername = await UserModel.findOne({
+      isVerified: false,
+      username: username,
+    });
+    if (
+      existingUnverifiedUserByUsername &&
+      dayjs(new Date()).isAfter(
+        dayjs(existingUnverifiedUserByUsername.verifyCodeExpiry)
+      )
+    ) {
+      await UserModel.deleteOne({ username: username, isVerified: false });
+    }
 
     //verified user already exists with the same username
     const existingVerifiedUserByUsername = await UserModel.findOne({

@@ -9,8 +9,11 @@ export async function POST(request: Request) {
   try {
     const { username, code } = await request.json();
 
+    console.log(username, code);
+
     const user = await UserModel.findOne({ username: username });
 
+    console.log("user", user);
     if (!user) {
       return Response.json(
         {
@@ -38,6 +41,15 @@ export async function POST(request: Request) {
         }
       );
     }
+
+    console.log(
+      "User code, recieved code, isCodeExpired",
+      user.verifyCode,
+      ",",
+      code,
+      ",",
+      isCodeExpired
+    );
 
     if (user.verifyCode === code && !isCodeExpired) {
       user.isVerified = true;
