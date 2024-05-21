@@ -186,7 +186,9 @@ const Dashboard = () => {
             messages
               .sort(
                 (a: any, b: any) =>
-                  new Date(b.createdAt) - new Date(a.createdAt)
+                  //sort by latest date
+                  new Date(b.createdAt).getTime() -
+                  new Date(a.createdAt).getTime()
               )
               .map((message, index) => (
                 <MessageCard
