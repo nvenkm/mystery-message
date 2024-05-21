@@ -30,6 +30,8 @@ export async function DELETE(
       { new: true }
     );
 
+    console.log(updatedResult, messageId, user._id);
+
     if (updatedResult.modifiedCount === 0) {
       return Response.json(
         {
