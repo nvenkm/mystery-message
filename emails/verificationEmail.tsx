@@ -14,6 +14,11 @@ const VerificationEmail = ({
       <p>
         Here&apos;s your OTP: <strong>{otp}</strong>{" "}
       </p>
+      <p>
+        Here is your verify page link:{" "}
+        <a href={`${process.env.HOMEPAGE_URL}/u/${username}`}></a>
+      </p>
+      <p>Verify code within 1 Hour, else you&apos;ll have to signup again!</p>
     </div>
   );
 };

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify code for Get Responses</title>
+    <style>
+      p {
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      h1 {
+        font-size: 17px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+
+      .outer {
+        border: 1px solid #c9bfbf;
+        padding: 15px;
+        border-radius: 10px;
+        background: #f6f6f6;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="outer">
+        <h1>Welcome <%= username %></h1>
+        <p>Thankyou for registering with us</p>
+        <p>Here is your OTP : <strong><%= otp %></strong></p>
+        <p>Here is your verify page <a href="<%= link %>">link</a></p>
+        <p>Verify code within 1 Hour, else you'll have to signup again!</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -2,6 +2,7 @@ import { resend } from "@/lib/resend";
 import VerificationEmail from "../../emails/verificationEmail";
 import { ApiResponseInterface } from "@/types/ApiResponse";
 import nodemailer from "nodemailer";
+import ejs from "ejs";
 
 export async function sendVerificationEmail(
   email: string,
@@ -24,17 +25,21 @@ export async function sendVerificationEmail(
       },
     });
 
+    console.log(
+      `Verify page link : ${process.env.HOMEPAGE_URL}/verify/${username}`
+    );
+    //render the ejs template
+    const html = await ejs.renderFile("emails/verificationEmail.ejs", {
+      username: username,
+      otp: verifyCode,
+      link: `${process.env.HOMEPAGE_URL}/verify/${username}`,
+    });
+
     var mailOptions = {
       from: process.env.EMAIL,
       to: email,
       subject: "Sending Email using Node.js",
-      html: `<div>
-              <h4>Hi, ${username}</h4>
-              <p>Thankyou for registering with us,</p>
-              <p>
-                Here&apos;s your OTP: <strong>${verifyCode}</strong>
-              </p>
-            </div>`,
+      html: html,
     };
     const sent = await transporter.sendMail(mailOptions);
 
