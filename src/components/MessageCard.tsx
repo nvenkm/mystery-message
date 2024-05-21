@@ -23,6 +23,7 @@ import { Button } from "./ui/button";
 import { MessageInterface } from "@/models/User";
 import axios from "axios";
 import { useToast } from "./ui/use-toast";
+import dayjs from "dayjs";
 
 type MessageCardProps = {
   message: MessageInterface;
@@ -67,7 +68,7 @@ const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
         </AlertDialog>
       </CardHeader>
       <CardFooter>
-        <p>{date.toLocaleString()}</p>
+        <p>{dayjs(message.createdAt).format("dddd, MMMM D, YYYY h:mm A")}</p>
       </CardFooter>
     </Card>
   );
