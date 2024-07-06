@@ -62,12 +62,32 @@ const Signin = () => {
     }
   };
 
+  const handleFillCredentials = () => {
+    form.reset({
+      email: "7naveennn@gmail.com",
+      password: "naveen",
+    });
+  };
+
   return (
     <div className="max-w-4xl mx-7 my-20 md:m-0 grid grid-cols-1 md:grid-cols-2">
       <div className="col-span-1 hidden md:block relative">
-        <h2 className="text-white text-4xl font-extrabold tracking-tight absolute top-8 left-6">
-          Welcome Back 👋
-        </h2>
+        <div className="absolute top-8 left-6">
+          <h2 className="text-white text-4xl font-extrabold tracking-tight">
+            Welcome Back 👋
+          </h2>
+          <div className="text-white mt-4 flex flex-col items-start gap-2 bg-white/20 p-3 rounded-md">
+            <h3 className="text-lg font-semibold">Test Credentials</h3>
+            <span>Email : 7naveennn@gmail.com</span>
+            <span>Password : naveen</span>
+            <Button
+              onClick={handleFillCredentials}
+              className="bg-transparent text-white border border-white h-8 leading-none"
+            >
+              Fill Credentials
+            </Button>
+          </div>
+        </div>
         <Image
           className="w-full h-full object-cover"
           priority
